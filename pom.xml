@@ -89,7 +89,7 @@
     </dependencies>
 
     <build>
-        <finalName>Utility</finalName>
+        <finalName>type_approval_reminder</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
