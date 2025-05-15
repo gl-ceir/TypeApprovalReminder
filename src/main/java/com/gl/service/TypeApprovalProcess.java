@@ -7,7 +7,6 @@ import com.gl.service.serviceImpl.TypeApprovalServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -18,14 +17,12 @@ import static com.gl.constants.ProcessKeys.FeatureName;
 import static com.gl.constants.ProcessKeys.moduleName;
 
 @Service
-public class MainController {
+public class TypeApprovalProcess {
     @Autowired
     TypeApprovalServiceImpl taservice;
     @Autowired
-    ApplicationContext context;
-    @Autowired
     ModuleAuditTrailService moduleAuditTrailService;
-    static Logger log = LogManager.getLogger(MainController.class);
+    static Logger log = LogManager.getLogger(TypeApprovalProcess.class);
     public static int successCount = 0;
     public static int failCount = 0;
     public static Long auditKey;
@@ -34,7 +31,7 @@ public class MainController {
         LocalDate localDate = LocalDate.now();
         if (!moduleAuditTrailService.canProcessRun(localDate, moduleName, FeatureName)) {
             log.info("Process:{} will not execute it may already Running or Completed for the day {}", "TypeApprovalReminder", localDate);
-            // return;
+            return;
         }
         log.info("Process:{} will start", "TypeApprovalReminder");
         Long start = System.currentTimeMillis();

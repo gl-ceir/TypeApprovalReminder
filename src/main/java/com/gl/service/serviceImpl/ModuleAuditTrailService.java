@@ -74,7 +74,7 @@ public class ModuleAuditTrailService {
                     .replaceAll(PARAM_CREATED_ON, moduleAuditTrail.getCreatedOn().format(DateFormatterConstants.simpleDateFormat)));
             log.info("Inserted ModuleAuditTrail:{}", moduleAuditTrail + " with key:" + key);
         } catch (Exception ex) {
-            log.info("Error to get executing insert moduleAuditTrail:{} Error:{}", moduleAuditTrail, ex.getMessage());
+            log.error("Error to get executing insert moduleAuditTrail:{} Error:{}", moduleAuditTrail, ex.getMessage());
         }
         return key;
     }

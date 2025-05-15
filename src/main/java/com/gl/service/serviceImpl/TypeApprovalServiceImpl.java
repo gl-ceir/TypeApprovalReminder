@@ -8,7 +8,6 @@ import com.gl.processer.services.QueryExecutorService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
@@ -24,11 +23,10 @@ import java.util.List;
 import static com.gl.constants.GenericQueries.SELECT_NON_TYPE_APPROVAL;
 import static com.gl.constants.GenericQueries.TABLE_NAME;
 import static com.gl.constants.ProcessKeys.*;
-import static com.gl.service.MainController.*;
+import static com.gl.service.TypeApprovalProcess.*;
 
 
 @Service
-@Component
 public class TypeApprovalServiceImpl {
     static Logger log = LogManager.getLogger(TypeApprovalServiceImpl.class);
 
@@ -37,7 +35,6 @@ public class TypeApprovalServiceImpl {
 
     @Autowired
     SysParamRepository sysParamRepository;
-
 
     @Autowired
     QueryExecutorService queryExecutorService;
@@ -82,7 +79,6 @@ public class TypeApprovalServiceImpl {
         LocalTime startTime = LocalTime.parse(startTimeStr, timeFormatter);
         LocalTime endTime = LocalTime.parse(endTimeStr, timeFormatter);
         LocalDateTime now = LocalDateTime.now();
-
         LocalDateTime startDate = LocalDateTime.of(LocalDate.now(), startTime);
         LocalDateTime endDate = LocalDateTime.of(LocalDate.now(), endTime);
         if (now.isBefore(startDate)) {

@@ -13,7 +13,4 @@ public class SysParam {
     public String tag;
     public String value;
 
-    @Column(name = "feature_name")
-    public String featureName;
-
 }

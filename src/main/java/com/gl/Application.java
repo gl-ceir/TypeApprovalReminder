@@ -1,6 +1,6 @@
 package com.gl;
 
-import com.gl.service.MainController;
+import com.gl.service.TypeApprovalProcess;
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,7 +14,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.concurrent.TimeUnit;
-
 
 @EnableJpaRepositories({"com.gl.persistence.repository"})
 @EntityScan({"com.gl.persistence.entities"})
@@ -33,7 +32,7 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         try {
-            applicationContext.getBean(MainController.class).process();
+            applicationContext.getBean(TypeApprovalProcess.class).process();
         } catch (Exception e) {
             log.error("Error while processing Error:{}", e.getMessage(), e);
         }
@@ -44,6 +43,5 @@ public class Application implements CommandLineRunner {
             throw new RuntimeException(e);
         }
     }
-
 
 }

@@ -10,13 +10,11 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-@Component
+
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-// s@Table(name = "module_audit_trail", catalog = "app")
-
 public class ModuleAuditTrail {
     private Long id;
     private LocalDateTime createdOn;

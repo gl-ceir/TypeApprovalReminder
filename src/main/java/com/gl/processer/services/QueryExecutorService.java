@@ -21,7 +21,6 @@ public class QueryExecutorService {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-
     public Long executeWithKey(String query) {
         long start = System.currentTimeMillis();
         log.info("DB[{}] Going to Execute Query:{}", query);

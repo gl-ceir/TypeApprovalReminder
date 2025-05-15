@@ -29,7 +29,6 @@ public interface GenericQueries {
 
     String SELECT_MODULE_AUDIT_TRAIL_TILL_NOW = "select  created_on, feature_name ,status_code from aud.modules_audit_trail where  feature_name='" + FEATURE_NAME + "' and module_name='" + MODULE_NAME + "' ";
 
-    String SELECT_NON_TYPE_APPROVAL = "SELECT ai.IMEI, ai.IMSI, ai.MSISDN, ai.MOBILE_OPERATOR FROM " + TABLE_NAME + " ai JOIN MOBILE_DEVICE_REPOSITORY mdr ON ai.tac = mdr.DEVICE_ID WHERE ( ai.msisdn != '' OR ai.msisdn is not null) and   mdr.IS_TYPE_APPROVED != 1    and  ai.MSISDN not in(select msisdn from notification where SUB_FEATURE = '"+FeatureName+"') ";
-
+    String SELECT_NON_TYPE_APPROVAL = "SELECT DISTINCT ai.MSISDN, ai.MOBILE_OPERATOR FROM " + TABLE_NAME + " ai JOIN MOBILE_DEVICE_REPOSITORY mdr ON ai.TAC = mdr.DEVICE_ID WHERE ai.MSISDN IS NOT NULL AND ai.MSISDN != ''   AND mdr.IS_TYPE_APPROVED != 1 AND NOT EXISTS ( SELECT 1 FROM NOTIFICATION n WHERE n.SUB_FEATURE = '"+FeatureName+"'   AND n.MSISDN = ai.MSISDN  )";
 
 }

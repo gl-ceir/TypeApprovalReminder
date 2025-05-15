@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Data
-@Service
 public class NotificationRequestDto {
 
     private String channelType;

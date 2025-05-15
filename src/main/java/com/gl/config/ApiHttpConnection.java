@@ -10,10 +10,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-@Service
 @Component
 public class ApiHttpConnection {
 
@@ -38,7 +36,6 @@ public class ApiHttpConnection {
             log.info(" Sent Request:{}, TimeTaken:{} Response:{}", notificationDto, responseEntity,
                     (System.currentTimeMillis() - start));
             if (responseEntity.getStatusCode().is2xxSuccessful()) {
-                log.info(" Sent Successfully Request:{}", notificationDto);
                 return true;
             }
         } catch (org.springframework.web.client.ResourceAccessException resourceAccessException) {
