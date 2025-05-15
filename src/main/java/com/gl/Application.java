@@ -17,7 +17,6 @@ import java.util.concurrent.TimeUnit;
 
 @EnableJpaRepositories({"com.gl.persistence.repository"})
 @EntityScan({"com.gl.persistence.entities"})
-@SpringBootConfiguration
 @SpringBootApplication(scanBasePackages = {"com.gl"})
 @EnableEncryptableProperties
 public class Application implements CommandLineRunner {

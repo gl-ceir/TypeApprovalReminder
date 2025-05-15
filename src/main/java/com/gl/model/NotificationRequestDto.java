@@ -1,6 +1,8 @@
 package com.gl.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -21,7 +23,6 @@ public class NotificationRequestDto {
     private LocalDateTime deliveryDateTime;
     private String featureTxnId;
 
-    public NotificationRequestDto(){}
     public NotificationRequestDto(String channelType, String featureName, String msgLang, String msisdn, String message, String operatorName, LocalDateTime deliveryDateTime,String subFeature,String featureTxnId) {
         this.channelType = channelType;
         this.featureName = featureName;
@@ -32,6 +33,5 @@ public class NotificationRequestDto {
         this.deliveryDateTime = deliveryDateTime;
         this.subFeature = subFeature;
         this.featureTxnId = featureTxnId;
-
     }
 }
